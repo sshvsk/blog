@@ -28,7 +28,7 @@ class Tag(models.Model):
         return f"Tag: {self.title} with {self.posts.count()} post(s)"
 
 
-class Adress(models.Model):
+class Address(models.Model):
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
@@ -36,7 +36,7 @@ class Adress(models.Model):
         blank=True, null=True
     )
     city = models.CharField(max_length=30)
-    adress = models.CharField(max_length=60)
+    address = models.CharField(max_length=60)
 
 
 # Create your models here.
