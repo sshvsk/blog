@@ -27,16 +27,4 @@ class Tag(models.Model):
     def __str__(self):
         return f"Tag: {self.title} with {self.posts.count()} post(s)"
 
-
-class Address(models.Model):
-    author = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE,
-        related_name="posts",
-        blank=True, null=True
-    )
-    city = models.CharField(max_length=30)
-    address = models.CharField(max_length=60)
-
-
 # Create your models here.
