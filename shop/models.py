@@ -1,3 +1,4 @@
+from django.db.models import ImageField
 from django.conf import settings
 from django.db import models
 
@@ -8,6 +9,7 @@ class Product(models.Model):
     title = models.CharField(max_length=200)
     color = models.CharField(max_length=200, choices=COLOR_CHOICES, blank=True, null=True)
     cost = models.IntegerField()
+    image = ImageField(upload_to="products/", blank=True, null=True)
 
     def __str__(self):
         return f"Product: {self.title}"
@@ -21,3 +23,5 @@ class Purchase(models.Model):
         Product, related_name="purchases", on_delete=models.CASCADE
     )
     count = models.IntegerField()
+
+

@@ -17,4 +17,4 @@ def products(request):
 
 
 def purchases(request):
-    Purchase.objects.annotate(purchase_count=Sum(F("count") * F("product__cost"))).values('product')
+    Purchase.objects.annotate(purchase_count=Sum(F("count") * F("product__cosert"))).values('product')
