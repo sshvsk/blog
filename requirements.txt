@@ -11,3 +11,5 @@ djangorestframework~=3.13.1
 pytest-django>=4.5.2
 pytest-factoryboy==2.5.0
 factory-boy>=3.2.1
+django-filter
+scrapy==2.6.2

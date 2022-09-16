@@ -1,0 +1,32 @@
+version: '3.3'
+services:
+
+ postgres:
+  image: postgres:latest
+  environment:
+   - POSTGRES_DB=django
+   - POSTGRES_USER=django
+   - POSTGRES_PASSWORD=django
+
+ django:
+  build: .
+  ports:
+   - "8000:8000"
+  volumes:
+   - ./:/app/
+  depends_on:
+     - postgres
+  environment:
+   - DATABASE_HOST=postgres
+  command: |
+    python manage.py runserver 0.0.0.0:8000
+
+ redis:
+  image: redis:latest
+  container_name: my_redis
+  command: redis-server /etc/redis/redis.conf
+  ports:
+   - "16379:16379"
+  volumes:
+   - ./data:/data
+   - ./redis.conf:/etc/redis/redis.conf

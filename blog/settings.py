@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework.authtoken',
     'crispy_forms',
     'crispy_bootstrap5',
     'posts',
@@ -88,7 +89,7 @@ DATABASES = {
         "NAME": "django",
         "USER": "django",
         "PASSWORD": "django",
-        "HOST": "localhost",
+        "HOST": os.environ.get('DATABASE_HOST', 'localhost'),
         "PORT": 5432,
     }
 }
@@ -169,3 +170,13 @@ MY_VAR = os.environ.get('MY_ENV_VAR')
 VAR_ONE = os.environ.get('VAR_ONE')
 VAR_TWO = os.environ.get('VAR_TWO')
 
+# https://www.django-rest-framework.org/tutorial/quickstart/
+
+REST_FRAMEWORK = {
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.BasicAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
+    ],
+    "PAGE_SIZE": 10,
+}
